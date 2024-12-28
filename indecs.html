@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CGS</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 20px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    header a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0 15px;
+      font-size: 18px;
+    }
+    header a:hover {
+      color: #00bfff;
+    }
+    .logo {
+      text-align: center;
+      margin-top: 150px;
+    }
+    .logo img {
+      width: 200px;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      0% {
+        filter: drop-shadow(0 0 5px #fff);
+      }
+      100% {
+        filter: drop-shadow(0 0 20px #00f);
+      }
+    }
+    .content {
+      text-align: center;
+      padding: 20px;
+    }
+    .content h1 {
+      font-size: 36px;
+      padding: 20px 0;
+    }
+    .content p {
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    section {
+      display: none;
+      padding: 50px 0;
+      margin: 20px;
+      background-color: #111;
+      text-align: center;
+      border-radius: 8px;
+    }
+    section.active {
+      display: block;
+    }
+    section h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    section p {
+      font-size: 18px;
+    }
+    #projects .project-card {
+      background-color: #222;
+      border: 2px solid #444;
+      margin: 10px;
+      padding: 20px;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    #projects .project-card:hover {
+      transform: scale(1.05);
+      background-color: #333;
+    }
+    .project-card a {
+      color: #00bfff;
+      text-decoration: none;
+    }
+    .project-card a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <a href="javascript:void(0)" onclick="showSection('home')">Головна</a>
+      <a href="javascript:void(0)" onclick="showSection('projects')">Проекти</a>
+      <a href="javascript:void(0)" onclick="window.open('https://send.monobank.ua/jar/5TxhQULutR', '_blank')">Help for CGS</a>
+    </div>
+  </header>
+
+  <div class="logo" id="logo">
+    <img src="cgs-logo.png" alt="CGS Logo">
+  </div>
+
+  <div class="content" id="home" class="active">
+    <h1>Ласкаво просимо до CGS</h1>
+    <p>CGS – Команда, яка щодня стає кращою!</p>
+  </div>
+
+  <section id="projects">
+    <h2>Проєкти</h2>
+    <div class="project-card">
+      <h3>Flappy Bird in Scratch</h3>
+      <p>Це класичний проєкт Flappy Bird, створений за допомогою Scratch. Ви можете завантажити його та спробувати свою удачу!</p>
+      <p><a href="https://drive.google.com/file/d/1qsUd3DXTaOsju5o0X5sBHiUCyhWolA1d/view?usp=drive_link" target="_blank"><strong>Завантажити</strong></a></p>
+    </div>
+  </section>
+
+  <script>
+    function showSection(sectionId) {
+      // Сховати всі розділи
+      document.querySelectorAll('section, .content').forEach(el => el.style.display = 'none');
+      
+      // Прибираємо логотип, якщо не на головній
+      const logo = document.getElementById('logo');
+      if (sectionId === 'home') {
+        logo.style.display = 'block';
+      } else {
+        logo.style.display = 'none';
+      }
+      
+      // Показуємо вибрану секцію
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.style.display = 'block';
+      }
+    }
+
+    // Початково показуємо головну секцію
+    showSection('home');
+  </script>
+</body>
+</html>
